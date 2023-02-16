@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="pagetitle mt-5 pt-4">
+    <h1>Orders</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Orders</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Orders List</h5>
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table class="table table-borderless datatable dataTable-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">#</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Reference</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">User</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Items</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Amount</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ord in orders %}
+                                        <tr>
+                                            <td>{{ ord['id'] }}</td>
+                                            <td>
+                                                {{ ord['reference'] }}
+                                            </td>
+                                            <td>
+                                                {{ ord['user_id'] }}
+                                            </td>
+                                            <td>
+                                                0
+                                            </td>
+                                            <td>
+                                                {{ ord['amount'] }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

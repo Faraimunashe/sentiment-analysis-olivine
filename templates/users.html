@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="pagetitle mt-5 pt-4">
+    <h1>Users</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Users</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Users List</h5>
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table class="table table-borderless datatable dataTable-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">#</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Username</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Email</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Role</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Action</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user['id'] }}</td>
+                                            <td>
+                                                {{ user['name'] }}
+                                            </td>
+                                            <td>
+                                                {{ user['email'] }}
+                                            </td>
+                                            <td>
+                                                {{ user['role'] }}
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-pencil-alt"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

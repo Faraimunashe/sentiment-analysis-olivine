@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="pagetitle mt-5 pt-4">
+    <h1>Reviews</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Reviews</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Reviews List</h5>
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table class="table table-borderless datatable dataTable-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">#</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Product</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">User</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Message</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Subjective</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Polarity</a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="#" class="dataTable-sorter">Analysis</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for rev in reviews %}
+                                        <tr>
+                                            <td>{{ rev['id'] }}</td>
+                                            <td>
+                                                {{ rev['product_id'] }}
+                                            </td>
+                                            <td>
+                                                {{ rev['user_id'] }}
+                                            </td>
+                                            <td>
+                                                {{ rev['message'] }}
+                                            </td>
+                                            <td>
+                                                {{ rev['subjective'] }}
+                                            </td>
+                                            <td>
+                                                {{ rev['polarity'] }}
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-secondary">{{ rev['analysis'] }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
