@@ -10,6 +10,7 @@ from functools import wraps
 
 # You can change this to any folder on your system
 ALLOWED_EXTENSIONS = {'jpeg'}
+ROWS_PER_PAGE = 8
 
 
 app = Flask(__name__)
@@ -50,11 +51,13 @@ def admin_role(f):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     categories = Category.query.all()
-    products = Product.query.all()
+    #products = Product.query.all()
     if request.method == 'POST':
         search = request.form.get('search')
         products = Product.query.filter_by(name=search).all()
 
+    page = request.args.get('page', 1, type=int)
+    products = Product.query.paginate(page=page, per_page=ROWS_PER_PAGE)
     return render_template('index.html', products=products, categories=categories)
 
 
