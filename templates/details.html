@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container dark-grey-text mt-5">
+    <div class="row wow fadeIn">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4 mt-5">
+                <div class="view overlay">
+                  <img class="card-img-top" src="{{url_for('static', filename=image)}}"
+                    alt="Card image cap">
+                  <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4 mt-4">
+            <div class="p-4">
+                <div class="mb-3">
+                    <a href="">
+                        <span class="badge purple mr-1">{{category['name']}}</span>
+                    </a>
+                    <a href="">
+                        <h3 class=""><b>{{product['name']}}</b></h3>
+                    </a>
+                </div>
+
+                <p class="lead">
+                    <span class="mr-1">
+                        Price: 
+                    </span>
+                    <span>${{product['price']}}</span>
+                </p>
+
+                <p class="lead font-weight-bold">Description</p>
+
+                <p>{{product['description']}}</p>
+
+                <form class="d-flex justify-content-left" action="/rate" method="POST">
+                    <input type="hidden" name="product_id" value="{{product['id']}}">
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <textarea class="form-control" name="rate" style="height: 100px" required></textarea>
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary">Send Review</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-center wow fadeIn">
+      <div class="col-md-6 text-center">
+
+        <h4 class="my-4 h4">Other Reviews</h4>
+        {% for review in reviews %}
+        <p>
+            <h4>{{review['name']}}</h4>
+            {{review['message']}}
+        </p>
+        <hr/>
+        {% endfor %}
+
+      </div>
+    </div>
+</div>
+
+{% endblock %}

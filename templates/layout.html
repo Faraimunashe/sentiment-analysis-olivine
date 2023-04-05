@@ -9,11 +9,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="static/css/mdb.min.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/mdb.min.css')}}" rel="stylesheet">
     <!-- Your custom styles (optional) -->
-    <link href="static/css/style.min.css" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.min.css')}}" rel="stylesheet">
     <style type="text/css">
         html,
         body,
@@ -59,7 +59,8 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand waves-effect" href="/" target="_blank">
+            <a class="navbar-brand waves-effect" href="/">
+                <img src="{{url_for('static', filename='img/olivine.png')}}" height="25" width="45" alt="Logo">
                 <strong class="green-text">OLIVINE INDUSTRIES</strong>
             </a>
 
@@ -78,18 +79,11 @@
 
                 <!-- Right -->
                 <ul class="navbar-nav nav-flex-icons">
-                    <li class="nav-item">
-                        <a class="nav-link waves-effect">
-                        <span class="badge red z-depth-1 mr-1"> 1 </span>
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-                        </a>
-                    </li>
                     {% if current_user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link waves-effect" href="/profile">
                             <i class="fas fa-user"></i>
-                            <span class="clearfix d-none d-sm-inline-block"> Farai </span>
+                            <span class="clearfix d-none d-sm-inline-block"> {{ current_user.name }} </span>
                         </a>
                     </li>
                     
@@ -98,6 +92,17 @@
                             <i class="fa fa-lock mr-2"></i>Logout
                         </a>
                     </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link waves-effect">
+                                <i class="fa fa-lock mr-2"></i>Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link waves-effect">
+                                <i class="fa fa-lock mr-2"></i>Register
+                            </a>
+                        </li>
                     {% endif %}
                 </ul>
 
@@ -134,13 +139,13 @@
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
-    <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="static/js/popper.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/popper.min.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="static/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/mdb.min.js')}}"></script>
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
